@@ -1,0 +1,6 @@
+
+
+
+npm init svelte@next my-app
+
+npx degit sveltejs/template my-app
