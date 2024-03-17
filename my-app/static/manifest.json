@@ -1,0 +1,9 @@
+{
+    "name": "QG app",
+    "short_name": "qoute",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#808080",
+    "theme_color": "808000",
+    "description": "quote generator"
+}
