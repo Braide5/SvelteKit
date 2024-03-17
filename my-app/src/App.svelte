@@ -2,7 +2,7 @@
 	const getTitle = () => titles[index];
 
 	const updateTitle = () => {
-		index = index === 8 ? 0 : index + 1;
+		index = index === 9 ? 0 : index + 1;
 		title = getTitle();
 	};
 
@@ -16,6 +16,7 @@
 		"The only thing we have to fear is fear itself. ",
 		"Darkness cannot drive out darkness: only light can do that.",
 		"Do one thing every day that scares you.",
+		"You are nice",
 	];
 	let index = 0;
 	let title = getTitle();
