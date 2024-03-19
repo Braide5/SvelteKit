@@ -4,13 +4,18 @@
     "start_url": "/",
     "display": "standalone",
     "background_color": "#808080",
-    "theme_color": "ff3f20",
+    "theme_color": "#ff3f20",
     "description": "quote generator",
     "icon": [
         {
             "src": "favicon.png",
             "type": "image/png",
             "sizes": "64x64"
+        },
+        {
+            "src": "favicon.png",
+            "type": "image/png",
+            "sizes": "144x144"
         },
         {
             "src": "favicon.png",
