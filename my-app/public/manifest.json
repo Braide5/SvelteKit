@@ -1,7 +1,7 @@
 {
     "name": "QG app",
     "short_name": "qoute",
-    "start_url": "/",
+    "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#808080",
     "theme_color": "#ff3f20",
