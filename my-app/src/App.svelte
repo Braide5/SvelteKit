@@ -1,31 +1,39 @@
 <script>
-	const getTitle = () => titles[index];
+	export let name;
+	import axios from 'axios';
 
+	const apiKey = process.env.MY_API_KEY;
+
+	let title = `loading....`;
+	let error = null;
+
+	const fetchQuote = async () => {
+		try {
+			const response = await axios.get('https://api.api-ninjas.com/v1/quotes?', {
+				headers: {'x-api-key': apiKey},
+			});
+			title = response.data[0]?.quote || "No quote available";
+		} catch (err){
+			error = 'An error ocurred, failed to get quotes.';
+			console.log(error);
+		}
+	}
 	const updateTitle = () => {
-		index = index === 9 ? 0 : index + 1;
-		title = getTitle();
+		fetchQuote();
 	};
 
-	const titles = [
-		"I love you",
-		"You are beautiful",
-		"It is a lovely day",
-		"Well done is better than well said.",
-		"You must be the change you wish to see in the world",
-		"Spread love everywhere you go. ",
-		"The only thing we have to fear is fear itself. ",
-		"Darkness cannot drive out darkness: only light can do that.",
-		"Do one thing every day that scares you.",
-		"You are nice",
-	];
-	let index = 0;
-	let title = getTitle();
+	fetchQuote();
+	
 </script>
 
 <div class="index">
-	<h1>Hello</h1>
+	<h1>Hello, {name}</h1>
 	<p>
-		{title}
+		{#if error}
+			{error}
+		{:else}
+			{title}
+		{/if}
 	</p>
 
 	<button on:click={updateTitle}>Change quote</button>
