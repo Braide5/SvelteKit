@@ -6,8 +6,37 @@
 		title = getTitle();
 	};
 
+	async function fetchRandomJoke() {
+		try {
+			const response = await fetch(
+				"https://official-joke-api.appspot.com/random_joke",
+				{
+					headers: {
+						method: "GET",
+						contentType: "application/json",
+						"Access-Control-Allow-Origin": "*",
+					},
+				},
+			);
+			const data = await response.json();
+
+			return data;
+		} catch (error) {
+			console.error("Error fetching joke:", error);
+			return "Sorry, couldn't fetch a joke at the moment.";
+		}
+	}
+
+	// Call the function to fetch a random joke
+	fetchRandomJoke()
+		.then((joke) => {
+			console.log(joke);
+		})
+		.catch((error) => {
+			console.error("Error fetching joke:", error);
+		});
+
 	const titles = [
-		"I love you",
 		"You are beautiful",
 		"It is a lovely day",
 		"Well done is better than well said.",
