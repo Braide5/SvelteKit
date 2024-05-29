@@ -1,60 +1,41 @@
 <script>
-	const getTitle = () => titles[index];
+	export let name;
+	import axios from "axios";
 
-	const updateTitle = () => {
-		index = index === 9 ? 0 : index + 1;
-		title = getTitle();
-	};
+	const apiKey = process.env.MY_API_KEY;
 
-	async function fetchRandomJoke() {
+	let title = `loading....`;
+	let error = null;
+
+	const fetchQuote = async () => {
 		try {
-			const response = await fetch(
-				"https://official-joke-api.appspot.com/random_joke",
+			const response = await axios.get(
+				"https://api.api-ninjas.com/v1/quotes?",
 				{
-					headers: {
-						method: "GET",
-						contentType: "application/json",
-						"Access-Control-Allow-Origin": "*",
-					},
+					headers: { "x-api-key": apiKey },
 				},
 			);
-			const data = await response.json();
-
-			return data;
-		} catch (error) {
-			console.error("Error fetching joke:", error);
-			return "Sorry, couldn't fetch a joke at the moment.";
+			title = response.data[0]?.quote || "No quote available";
+		} catch (err) {
+			error = "An error ocurred, failed to get quotes.";
+			console.log(error);
 		}
-	}
+	};
+	const updateTitle = () => {
+		fetchQuote();
+	};
 
-	// Call the function to fetch a random joke
-	fetchRandomJoke()
-		.then((joke) => {
-			console.log(joke);
-		})
-		.catch((error) => {
-			console.error("Error fetching joke:", error);
-		});
-
-	const titles = [
-		"You are beautiful",
-		"It is a lovely day",
-		"Well done is better than well said.",
-		"You must be the change you wish to see in the world",
-		"Spread love everywhere you go. ",
-		"The only thing we have to fear is fear itself. ",
-		"Darkness cannot drive out darkness: only light can do that.",
-		"Do one thing every day that scares you.",
-		"You are nice",
-	];
-	let index = 0;
-	let title = getTitle();
+	fetchQuote();
 </script>
 
 <div class="index">
-	<h1>Hello</h1>
+	<h1>Hello, {name}</h1>
 	<p>
-		{title}
+		{#if error}
+			{error}
+		{:else}
+			{title}
+		{/if}
 	</p>
 
 	<button on:click={updateTitle}>Change quote</button>
