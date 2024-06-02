@@ -31,6 +31,7 @@
 <div class="index">
 	<h1>Hello, {name}</h1>
 	<p>
+		cx
 		{#if error}
 			{error}
 		{:else}
