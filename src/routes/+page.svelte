@@ -8,12 +8,22 @@
 	let error = null;
 
 	/**
-	 * @type {string}
+	 * @type {string }
 	 */
-	let title = `loading....`;
+	let title = "Please click on the button to get a quote.";
+
+
+  /**
+  * @type {boolean}
+  */
+  let isLoading = false
+
 
 	const fetchQuote = async () => {
+
 		try {
+      isLoading = true
+
 			const response = await fetch('https://api.api-ninjas.com/v1/quotes?', {
 				headers: { 'x-api-key': apiKey }
 			});
@@ -29,7 +39,9 @@
 		} catch (err) {
 			error = 'An error ocurred, failed to get quotes.';
 			console.log(error);
-		}
+		} finally {
+      isLoading = false
+    }
 	};
 </script>
 
@@ -44,7 +56,13 @@
 		{/if}
 	</p>
 
-	<button on:click={fetchQuote}>Change quote</button>
+	<button on:click={fetchQuote}>
+    {#if isLoading} 
+      {"Fetching..."} 
+    {:else} 
+      {"Change Quote"} 
+    {/if}
+  </button>
 </div>
 
 <style>

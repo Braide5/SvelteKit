@@ -16,9 +16,9 @@ self.addEventListener('install', (event) => {
 		await cache.addAll(ASSETS);
 	}
 
-	// console.log('installing service worker for version', version);
-	// console.log('caching assets', ASSETS);
-	// console.log('caching build', build);
+	console.log('installing service worker for version', version);
+	console.log('caching assets', ASSETS);
+	console.log('caching build', build);
 
 	event.waitUntil(addFilesToCache());
 });
