@@ -1,0 +1,17 @@
+{
+	"name": "QG",
+	"description": "Quote Generator",
+	"short_name": "qoute",
+	"display": "standalone",
+	"start_url": "/",
+	"background_color": "#808080",
+	"theme_color": "#ff3f20",
+	"icons": [
+		{
+			"src": "logo1.avif",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any maskable"
+		}
+	]
+}
