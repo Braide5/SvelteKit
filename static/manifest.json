@@ -1,7 +1,7 @@
 {
 	"name": "QG",
 	"description": "Quote Generator",
-	"short_name": "qoute",
+	"short_name": "quote",
 	"display": "standalone",
 	"start_url": "/",
 	"background_color": "#808080",
