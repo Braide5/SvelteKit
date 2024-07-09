@@ -10,7 +10,7 @@
 	/**
 	 * @type {string }
 	 */
-	let title = 'Click the button to start';
+	let title = 'Please click on the button to get a quote.';
 
 	/**
 	 * @type {boolean}
@@ -44,7 +44,6 @@
 
 <div class="index">
 	<h1>Hello, {name}</h1>
-
 	<p>
 		{#if error}
 			{error}
